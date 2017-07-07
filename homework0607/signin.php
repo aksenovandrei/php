@@ -15,7 +15,6 @@ if ($connection->connect_error) {
 $selectEmail = "SELECT * FROM users WHERE Email = '$email'";
 $resultArray = $connection->query($selectEmail)->fetch_assoc();
 if ($resultArray) {
-
     if ($resultArray['Password'] == $password && $resultArray['Email'] == $email) {
         echo json_encode(array('yyy' => true));
     } else {
