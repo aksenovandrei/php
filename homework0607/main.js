@@ -56,7 +56,7 @@ $(document).ready(function () {
                         '<br>' +
                         '<button><a href="http://localhost:8080/homework0607/changepass.html">Изменить пароль</a></button>');
                 } else {
-                    $('#sighIn').append('<p>Логин или пароль не верный</p>');
+                    $('#sighIn').next().html('Логин или пароль не верный');
                 }
             },
             error: function () {
