@@ -19,7 +19,7 @@ $(document).ready(function () {
                     console.log('success');
                     if (ttt.yyy) {
                         $('body').html('<p>Пароль успешно изменен </p><br>' +
-                            '<a href="http://localhost:8080/homework0607/">На главную</a>');
+                            '<a href="index.html">На главную</a>');
                     } else {
                         $('#changePass').append('<p>Логин или пароль не верный </p>');
                     }
@@ -51,10 +51,10 @@ $(document).ready(function () {
                 console.log('success');
                 if (ttt.yyy) {
                     $('body').html('<p>Вход выполнен</p><br>' +
-                        '<button><a href="http://localhost:8080/homework0607/">На главную</a></button>' +
+                        '<button><a href="index.html">На главную</a></button>' +
                         '<br>' +
                         '<br>' +
-                        '<button><a href="http://localhost:8080/homework0607/changepass.html">Изменить пароль</a></button>');
+                        '<button><a href="changepass.html">Изменить пароль</a></button>');
                 } else {
                     $('#sighIn').next().html('Логин или пароль не верный');
                 }
@@ -97,10 +97,10 @@ $(document).ready(function () {
                 console.log('success');
                 if (ttt.yyy) {
                     $('body').html('<p>Регистрация выполнена</p><br>' +
-                        '<button><a href="http://localhost:8080/homework0607/">На главную</a></button>' +
+                        '<button><a href="index.html">На главную</a></button>' +
                         '<br>' +
                         '<br>' +
-                        '<button><a href="http://localhost:8080/homework0607/changepass.html">Изменить пароль</a></button>');
+                        '<button><a href="changepass.html">Изменить пароль</a></button>');
                 } else {
                     $('#submit').next().html('пароли не совпадают');
                 }
