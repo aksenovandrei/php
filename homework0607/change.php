@@ -3,28 +3,29 @@ $email = $_POST['email'];
 $oldPass = $_POST['oldPass'];
 $newPass = $_POST['newPass'];
 
-$serverName = 'localhost';
-$userName = 'root';
-$userPass = 'Sergey13';
-$bdName = 'bd0407';
+include ('connection.php');
 
-$connection = new mysqli($serverName, $userName, $userPass, $bdName);
-
-if ($connection->connect_error) {
-    die('Error connection bd' . $connection->connect_error);
+function getUserByEmail($email) {
+    global $connection;
+    return $connection->query("SELECT * FROM users WHERE Email = '$email'")->fetch_assoc();
 }
-
-$selectEmail = "SELECT * FROM users WHERE Email = '$email'";
-$resultArray = $connection->query($selectEmail)->fetch_assoc();
-$idUser = $resultArray['id'];
-if ($resultArray['Password'] == $oldPass) {
-    $changePass = "UPDATE  `bd0407`.`users` SET  `Password` =  '$newPass' WHERE  `users`.`id` = '$idUser'";
-    mysqli_query($connection, $changePass);
-    echo json_encode(array('yyy' => true));
+$currentUser = getUserByEmail($email);
+//$selectEmail = "SELECT * FROM users WHERE Email = '$email'";
+//$resultArray = $connection->query($selectEmail)->fetch_assoc();
+if (count($currentUser) > 0) {
+    if ($currentUser['Password'] === $oldPass) {
+        $idUser = $currentUser['id'];
+        $changePass = "UPDATE  `$bdName`.`users` SET  `Password` =  '$newPass' WHERE  `users`.`id` = '$idUser'";
+        $connection->query($changePass);
+        $response = ['yyy' => true,
+        'uuu' => true];
+    } else {
+        $response = ['yyy' => false];
+    }
 } else {
-    echo json_encode(array('yyy' => false));
+    $response = ['yyy' => false];
 }
-
+echo json_encode($response);
 //$sql2 = "SELECT * FROM users WHERE Password = '$oldPass'";
 //
 //$result2 = $connection->query($sql2)->fetch_assoc();

@@ -12,7 +12,7 @@ $connection = new mysqli($serverName, $userName, $userPass, $bdName);
 if ($connection->connect_error) {
     die('Error connection bd' . $connection->connect_error);
 }
-$selectEmail = "SELECT * FROM users WHERE Email = '$email'";
+$selectEmail = "SELECT * FROM users WHERE Email = '$email' AND Password = '$password'";
 $resultArray = $connection->query($selectEmail)->fetch_assoc();
 if ($resultArray) {
     if ($resultArray['Password'] == $password && $resultArray['Email'] == $email) {

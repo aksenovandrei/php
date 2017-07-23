@@ -23,6 +23,9 @@ $(document).ready(function () {
                     } else {
                         $('#changePass').append('<p>Логин или пароль не верный </p>');
                     }
+                    if (ttt.uuu) {
+                        console.log('Серега победил')
+                    }
                 },
                 error: function () {
                     console.log('error');

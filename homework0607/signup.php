@@ -39,7 +39,7 @@ $checkEmail =  $connection->query("SELECT * FROM users WHERE Email = '$email'");
 
 if (checkRegExp ($_POST['fieldName'], $_POST['fieldValue']) && $checkEmail->num_rows == 0) {
     if ($password == $repeatpass && strlen($repeatpass) > 5) {
-        $reg = "INSERT INTO `bd0407`.`users` (`Email`, `Name`, `Surname`, `Password`) VALUES ('$email', '$name', '$surname', '$password');";
+        $reg = "INSERT INTO `$bdName`.`users` (`Email`, `Name`, `Surname`, `Password`) VALUES ('$email', '$name', '$surname', '$password');";
         mysqli_query($connection, $reg);
         echo json_encode(array('yyy' => true));
     } else {
